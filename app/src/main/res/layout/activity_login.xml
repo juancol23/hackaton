@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_linear"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/splash_background"
+    tools:context=".LoginActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linear_auth"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_weight=".5"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="15dp"
+            android:color="@color/color_white"
+            android:gravity="center"
+
+            android:orientation="vertical">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/accesoFacebook"
+                android:layout_width="match_parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+
+                facebook:com_facebook_login_text="Inicia sesión con Facebook"
+                facebook:com_facebook_logout_text="Salir de Facebook"
+                android:layout_height="50dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="20dp"
+
+                />
+
+
+    </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/accesoGoogle"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:background="@drawable/sing_google_design"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="22dp"
+                android:clickable="false"
+                android:src="@drawable/ic_google" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="Inicia sesión con Gmail"
+                android:textColor="@color/color_white" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
