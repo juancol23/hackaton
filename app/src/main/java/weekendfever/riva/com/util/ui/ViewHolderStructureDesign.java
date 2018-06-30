@@ -43,7 +43,7 @@ public class ViewHolderStructureDesign extends RecyclerView.ViewHolder{
 
         Glide.with(context)
                 .load(image)
-                .thumbnail(Glide.with(context).load("https://cdn.civitatis.com/estados-unidos/las-vegas/guia/bar-coyote.jpg"))
+                .thumbnail(Glide.with(context).load(R.drawable.item_placeholder))
                 .into(mPost_image);
 
     }
