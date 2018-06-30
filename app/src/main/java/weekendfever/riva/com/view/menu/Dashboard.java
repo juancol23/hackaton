@@ -28,6 +28,7 @@ import weekendfever.riva.com.LoginActivity;
 import weekendfever.riva.com.R;
 import weekendfever.riva.com.adapter.ViewPagerAdapter;
 import weekendfever.riva.com.view.fragmentos.FragmenEventos;
+import weekendfever.riva.com.view.fragmentos.FragmentBar;
 import weekendfever.riva.com.view.fragmentos.FragmentCiudad;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecas;
 import weekendfever.riva.com.view.fragmentos.Fragment_Inicio;
@@ -65,7 +66,7 @@ public class Dashboard extends AppCompatActivity
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentDiscotecas(), "Discotecas");
-        adapter.addFragment(new FragmenEventos(), "Bares");
+        adapter.addFragment(new FragmentBar(), "Bares");
         adapter.addFragment(new FragmentCiudad(), "Karaoke");
         viewPager.setAdapter(adapter);
     }
