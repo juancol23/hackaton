@@ -1,5 +1,6 @@
 package weekendfever.riva.com.view.menu;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -15,7 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
@@ -26,10 +29,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import weekendfever.riva.com.LoginActivity;
 import weekendfever.riva.com.R;
 import weekendfever.riva.com.adapter.ViewPagerAdapter;
+import weekendfever.riva.com.view.fragmentos.FragmenEventos;
 import weekendfever.riva.com.view.fragmentos.FragmentBar;
+import weekendfever.riva.com.view.fragmentos.FragmentCiudad;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecas;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecasBackup;
 import weekendfever.riva.com.view.fragmentos.FragmentKaraoke;
+import weekendfever.riva.com.view.fragmentos.FragmentSetting;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,13 +48,23 @@ public class Dashboard extends AppCompatActivity
     private ViewPager viewPager;
     private static Typeface Pacifico,Nightmare,Double,BloodLust;
 
+    NavigationView mNavigationView;
     //a list to store all the products
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        initNavigation();
         init();
+
+    }
+
+    private void initNavigation() {
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void init() {
@@ -119,6 +135,8 @@ public class Dashboard extends AppCompatActivity
 //            return true;
 //        }
 
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -129,12 +147,26 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
+            setToolbar("Weekend Fever");
+
+
             // Handle the camera action
         } else if (id == R.id.nav_eventos) {
+            setToolbar("Eventos");
+//            TabLayout tabLayout = findViewById(R.id.tabs);
+//            tabLayout.setVisibility(View.GONE);
+            menu_eventos();
+
+
 
         } else if (id == R.id.nav_ciudad) {
+            setToolbar("Ciudad");
+            menu_ciudad();
+
 
         } else if (id == R.id.nav_configuracion) {
+            setToolbar("Configuración");
+            menu_setting();
 
         } else if (id == R.id.nav_logout) {
             LoginManager.getInstance().logOut();
@@ -148,10 +180,13 @@ public class Dashboard extends AppCompatActivity
     }
 
     public void needAccess(){
-        Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-        finish();
+        Intent i = new Intent(Dashboard.this,LoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(i);
+        Log.v("SALIR","Saliendo");
+        Toast.makeText(getApplicationContext(),"SALIENDO....",Toast.LENGTH_LONG).show();
+        finish();
+
     }
 
     private void setToolbar(String title) {
@@ -166,6 +201,30 @@ public class Dashboard extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+    }
+
+    private void menu_eventos() {
+        FragmenEventos eventos = new FragmenEventos();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenidoTotal, eventos)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack("")
+                .commit();
+    }
+
+    private void menu_ciudad() {
+        FragmentCiudad ciudad = new FragmentCiudad();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenidoTotal, ciudad)
+                .setTransition(FragmentTransaction.TRANSIT_EXIT_MASK)
+                .addToBackStack("")
+                .commit();
+    }
+
+    private void menu_setting() {
+        FragmentSetting setting = new FragmentSetting();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenidoTotal, setting)
+                .setTransition(FragmentTransaction.TRANSIT_UNSET)
+                .addToBackStack("")
+                .commit();
     }
 
 }

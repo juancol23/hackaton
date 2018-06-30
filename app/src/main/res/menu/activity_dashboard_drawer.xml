@@ -6,21 +6,17 @@
         <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_inicio"
-                android:icon="@drawable/ic_inicio_black"
-                android:visible="true"
-                android:title="Inicio" />
+                android:icon="@drawable/ic_home"
+                android:title="Inicios" />
 
             <item
                 android:id="@+id/nav_eventos"
-                android:icon="@drawable/ic_eventos_black"
-                android:visible="true"
+                android:icon="@drawable/ic_eventos"
                 android:title="Eventos" />
 
             <item
                 android:id="@+id/nav_ciudad"
-                android:icon="@drawable/ic_ciudad_black"
-                android:visible="true"
-
+                android:icon="@drawable/ic_ciudad"
                 android:title="Ciudades" />
         </group>
 
@@ -28,9 +24,11 @@
             <menu>
                 <item
                     android:id="@+id/nav_configuracion"
+                    android:icon="@drawable/ic_setting"
                     android:title="Configuracion" />
                 <item
                     android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
                     android:title="Cerrar Sesión" />
             </menu>
         </item>
