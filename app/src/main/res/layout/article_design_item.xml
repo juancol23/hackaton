@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:orientation="vertical">
 
         <ImageView
@@ -17,14 +18,35 @@
             android:src="@color/colorPrimary"
             android:id="@+id/design_item_image"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/design_item_title"
-            android:text="@string/titulo"
-            android:gravity="center"
-            android:textSize="@dimen/text_size_title"
-            />
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight=".5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/design_item_title"
+                android:maxLength="16"
+                android:text="@string/titulo"
+                android:gravity="left"
+                android:textSize="@dimen/text_size_title"
+                />
+
+            <TextView
+                android:layout_weight=".5"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/design_item_status"
+                android:maxLength="16"
+                android:text="Abierto"
+                android:gravity="right"
+                android:textSize="@dimen/text_size_title"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
 

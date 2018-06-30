@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,14 +29,14 @@ import weekendfever.riva.com.model.ArticleResponse;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentDiscotecas extends Fragment {
+public class FragmentDiscotecas extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     RecyclerView mRecyclerView;
     ArticleAdapter mArticleAdapter;
     RecyclerView.LayoutManager mLayoutManager;
 
-//    @BindView(R.id.refresh)
-//    SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.refresh)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     public FragmentDiscotecas() {
 
@@ -51,8 +52,8 @@ public class FragmentDiscotecas extends Fragment {
 
         mRecyclerView = view.findViewById(R.id.mRecyclerDiscteca);
 
-//       mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
-//       mSwipeRefreshLayout.setRefreshing(true);
+        ButterKnife.bind(this, view);
+
         mRecyclerView.hasFixedSize();
 
         mArticleAdapter = new ArticleAdapter(getActivity().getApplicationContext());
@@ -68,7 +69,15 @@ public class FragmentDiscotecas extends Fragment {
         return view;
     }
 
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        obtenerData();
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
     private void obtenerData() {
+        final FragmentDiscotecas mContext = this;
         ServiceApiNew service = RetrofitInstance.getRetrofitInstance().create(ServiceApiNew.class);
         Call<ArticleResponse> articleResponseCall = service.obtenerListaAnunciosApi();
         articleResponseCall.enqueue(new Callback<ArticleResponse>() {
@@ -77,6 +86,11 @@ public class FragmentDiscotecas extends Fragment {
                 ArticleResponse listaArticle = response.body();
                 ArrayList<Article> articlelista = listaArticle.getArticles();
 
+
+                mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+                mSwipeRefreshLayout.setOnRefreshListener(mContext);
+
+
                 for (int i = 0; i<articlelista.size();i++){
                     Article articleList = articlelista.get(i);
                     Log.v("TAG_FRAGMENTO","\n"+articleList.getTitle());
@@ -84,7 +98,6 @@ public class FragmentDiscotecas extends Fragment {
                 }
 
                 mArticleAdapter.passDataAdapter(articlelista);
-//                mSwipeRefreshLayout.setRefreshing(false);
 
             }
 
