@@ -74,6 +74,8 @@ public class FragmentBar extends Fragment {
             protected void populateViewHolder(ViewHolderStructureDesign viewHolder, final Bar model, final int position) {
                 final String post_key = getRef(position).getKey();
                 viewHolder.setTitle(model.getTitle());
+                viewHolder.setStatus(model.getStatus());
+
                 viewHolder.setImage(getContext(), model.getImage());
 
 //                viewHolder.mViewStructure.setOnClickListener(new View.OnClickListener() {
