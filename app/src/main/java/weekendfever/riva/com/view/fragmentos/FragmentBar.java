@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import weekendfever.riva.com.R;
 import weekendfever.riva.com.model.Bar;
 import weekendfever.riva.com.util.ui.ViewHolderStructureDesign;
+import weekendfever.riva.com.view.activity.detalle.Detalle;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,19 +79,20 @@ public class FragmentBar extends Fragment {
 
                 viewHolder.setImage(getContext(), model.getImage());
 
-//                viewHolder.mViewStructure.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        mProgress.setMessage("Accediendo...");
-//                        // mProgress.show();
-//                        //Toast.makeText(getContext(),"dale "+post_key,Toast.LENGTH_SHORT).show();
-//                        Intent singleBlogIntent = new Intent(getContext(), DetailsGoogle.class);
-//                        singleBlogIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                        singleBlogIntent.putExtra("blog_id", post_key);
-//                        startActivity(singleBlogIntent);
-//                        Log.v("ida","id"+post_key);
-//                    }
-//                });
+                viewHolder.mViewStructure.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mProgress.setMessage("Accediendo...");
+                        // mProgress.show();
+                        //Toast.makeText(getContext(),"dale "+post_key,Toast.LENGTH_SHORT).show();
+                        Intent singleBlogIntent = new Intent(getContext(), Detalle.class);
+                        singleBlogIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        singleBlogIntent.putExtra("blog_id", post_key);
+                        singleBlogIntent.putExtra("categoria", "Bar");
+                        startActivity(singleBlogIntent);
+                        Log.v("ida","id"+post_key);
+                    }
+                });
             }
         };
 

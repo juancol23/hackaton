@@ -87,6 +87,7 @@ public class FragmentDiscotecas extends Fragment {
                         Intent singleBlogIntent = new Intent(getContext(), Detalle.class);
                         singleBlogIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         singleBlogIntent.putExtra("blog_id", post_key);
+                        singleBlogIntent.putExtra("categoria", "Discotecas");
                         startActivity(singleBlogIntent);
                         Log.v("ida","id"+post_key);
                     }

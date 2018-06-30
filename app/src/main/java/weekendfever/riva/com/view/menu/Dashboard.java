@@ -183,8 +183,6 @@ public class Dashboard extends AppCompatActivity
         Intent i = new Intent(Dashboard.this,LoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(i);
-        Log.v("SALIR","Saliendo");
-        Toast.makeText(getApplicationContext(),"SALIENDO....",Toast.LENGTH_LONG).show();
         finish();
 
     }
