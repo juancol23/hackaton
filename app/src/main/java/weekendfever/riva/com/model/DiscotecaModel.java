@@ -1,14 +1,14 @@
 package weekendfever.riva.com.model;
 
-public class Bar {
+public class DiscotecaModel {
     private String title;
     private String status;
     private String image;
 
-    public Bar() {
+    public DiscotecaModel() {
     }
 
-    public Bar(String title, String status, String image) {
+    public DiscotecaModel(String title, String status, String image) {
         this.title = title;
         this.status = status;
         this.image = image;

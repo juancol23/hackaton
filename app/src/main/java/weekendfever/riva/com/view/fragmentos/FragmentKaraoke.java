@@ -21,14 +21,14 @@ import weekendfever.riva.com.util.ui.ViewHolderStructureDesign;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentDiscotecas extends Fragment {
+public class FragmentKaraoke extends Fragment {
 
 
     private RecyclerView mRecyclers;
     private DatabaseReference mDatabase;
     private ProgressDialog mProgress;
 
-    public FragmentDiscotecas() {
+    public FragmentKaraoke() {
         // Required empty public constructor
     }
 
@@ -47,7 +47,7 @@ public class FragmentDiscotecas extends Fragment {
     }
 
     private void init(View view) {
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Discotecas");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Karaoke");
         mDatabase.keepSynced(true);
 
         LinearLayoutManager layoutManagerTrending

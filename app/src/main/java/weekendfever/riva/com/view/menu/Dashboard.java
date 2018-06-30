@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,11 +26,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import weekendfever.riva.com.LoginActivity;
 import weekendfever.riva.com.R;
 import weekendfever.riva.com.adapter.ViewPagerAdapter;
-import weekendfever.riva.com.view.fragmentos.FragmenEventos;
 import weekendfever.riva.com.view.fragmentos.FragmentBar;
-import weekendfever.riva.com.view.fragmentos.FragmentCiudad;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecas;
-import weekendfever.riva.com.view.fragmentos.Fragment_Inicio;
+import weekendfever.riva.com.view.fragmentos.FragmentDiscotecasBackup;
+import weekendfever.riva.com.view.fragmentos.FragmentKaraoke;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -67,7 +65,7 @@ public class Dashboard extends AppCompatActivity
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentDiscotecas(), "Discotecas");
         adapter.addFragment(new FragmentBar(), "Bares");
-        adapter.addFragment(new FragmentCiudad(), "Karaoke");
+        adapter.addFragment(new FragmentKaraoke(), "Karaoke");
         viewPager.setAdapter(adapter);
     }
 
