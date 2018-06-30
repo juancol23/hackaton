@@ -30,9 +30,6 @@
     </string>
 
 
-
-
-
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">Siguiente</string>
     <string name="skip">Omitir</string>
@@ -52,5 +49,6 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">de nuevo</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

@@ -20,6 +20,7 @@ import weekendfever.riva.com.R;
 import weekendfever.riva.com.model.Bar;
 import weekendfever.riva.com.util.ui.ViewHolderStructureDesign;
 import weekendfever.riva.com.view.activity.detalle.Detalle;
+import weekendfever.riva.com.view.activity.detalle.mapa.MapsActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,7 +85,7 @@ public class FragmentDiscotecas extends Fragment {
                         mProgress.setMessage("Accediendo...");
                         // mProgress.show();
                         //Toast.makeText(getContext(),"dale "+post_key,Toast.LENGTH_SHORT).show();
-                        Intent singleBlogIntent = new Intent(getContext(), Detalle.class);
+                        Intent singleBlogIntent = new Intent(getContext(), MapsActivity.class);
                         singleBlogIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         singleBlogIntent.putExtra("blog_id", post_key);
                         singleBlogIntent.putExtra("categoria", "Discotecas");
