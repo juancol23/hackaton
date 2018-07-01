@@ -33,23 +33,113 @@
                 android:background="@drawable/presentacion_uno"
                 android:scaleType="centerCrop"/>
 
-            <TextView
-                android:id="@+id/postTitleDetails"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cargando Título..."
-                android:textSize="22sp"
-                />
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
 
-            <TextView
-                android:id="@+id/postDescDetails"
-                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cargando Título..."
-                android:textSize="22sp"
-                />
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:layout_marginLeft="@dimen/card_margin"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/card_margin"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/postTitleDetails"
+                        android:textColor="#454545"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cargando Título..."
+                        android:textSize="22sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/postUrlSites"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="www.discosonjo.com"
+                        android:textColor="#103fe9"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:layout_marginLeft="@dimen/card_margin"
+
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/card_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/postDescDetails"
+                        android:textColor="#454545"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/girl_ipsum"
+                        android:textSize="18sp"
+                        />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:layout_marginLeft="@dimen/card_margin"
+                android:layout_marginBottom="@dimen/card_margin"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/card_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/postHorarioLV"
+                        android:textColor="#454545"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Horario Lunes a Viernes: 16:00 - 05:00"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/postHorarioSD"
+                        android:textColor="#454545"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Horario Sábados y Domingos: 15:00 - 04:00"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
             <fragment
                 android:id="@+id/map"

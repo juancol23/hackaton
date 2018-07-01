@@ -1,6 +1,7 @@
 package weekendfever.riva.com.view.activity.detalle;
 
 import android.content.res.Resources;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -77,8 +78,9 @@ public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
                 String post_desc = (String) dataSnapshot.child("desc").getValue();
                 String post_image = (String) dataSnapshot.child("image").getValue();
 
+
                 mPostTitleDetails.setText(post_title);
-                mPostDescDetails.setText(post_desc);
+//                mPostDescDetails.setText(post_desc);
                 Glide.with(getApplicationContext())
                         .load(post_image)
                         .into(mImage_paralax);
@@ -91,6 +93,7 @@ public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
 
         });
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -109,8 +112,6 @@ public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
             } catch (Resources.NotFoundException e) {
                 Log.e("SYLE", "Can't find style. Error: ", e);
             }
-
-
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-11.991382, -77.006932);
