@@ -29,13 +29,23 @@ import weekendfever.riva.com.R;
 
 public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
 
-
     private GoogleMap googleMap;
 
     @BindView(R.id.postTitleDetails)
     TextView mPostTitleDetails;
+
     @BindView(R.id.postDescDetails)
     TextView mPostDescDetails;
+
+    @BindView(R.id.postUrlSites)
+    TextView mPostUrlSites;
+
+    @BindView(R.id.postHorarioLV)
+    TextView mPostHorarioLV;
+
+    @BindView(R.id.postHorarioSD)
+    TextView mPostHorarioSD;
+
 
     @BindView(R.id.image_paralax)
     ImageView mImage_paralax;
@@ -77,10 +87,16 @@ public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
                 String post_title = (String) dataSnapshot.child("title").getValue();
                 String post_desc = (String) dataSnapshot.child("desc").getValue();
                 String post_image = (String) dataSnapshot.child("image").getValue();
+                String post_urlSites = (String) dataSnapshot.child("urlSites").getValue();
+                String post_horalv = (String) dataSnapshot.child("horalv").getValue();
+                String post_horasd = (String) dataSnapshot.child("horasd").getValue();
 
 
+                mPostHorarioLV.setText(post_horalv);
+                mPostHorarioSD.setText(post_horasd);
                 mPostTitleDetails.setText(post_title);
-//                mPostDescDetails.setText(post_desc);
+                mPostDescDetails.setText(post_desc);
+                mPostUrlSites.setText(post_urlSites);
                 Glide.with(getApplicationContext())
                         .load(post_image)
                         .into(mImage_paralax);
@@ -108,10 +124,10 @@ public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
 
             if (!success) {
                 Log.e("SYLE", "Style parsing failed.");
-                }
-            } catch (Resources.NotFoundException e) {
-                Log.e("SYLE", "Can't find style. Error: ", e);
             }
+        } catch (Resources.NotFoundException e) {
+            Log.e("SYLE", "Can't find style. Error: ", e);
+        }
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-11.991382, -77.006932);
@@ -119,12 +135,6 @@ public class Detalle extends AppCompatActivity implements OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
-
-
-
-
-
-
 
 
 

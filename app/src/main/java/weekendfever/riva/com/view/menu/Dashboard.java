@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -29,12 +31,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import weekendfever.riva.com.LoginActivity;
 import weekendfever.riva.com.R;
 import weekendfever.riva.com.adapter.ViewPagerAdapter;
+import weekendfever.riva.com.view.activity.detalle.mapa.MapsActivity;
 import weekendfever.riva.com.view.fragmentos.FragmenEventos;
 import weekendfever.riva.com.view.fragmentos.FragmentBar;
+import weekendfever.riva.com.view.fragmentos.FragmentCercaMi;
 import weekendfever.riva.com.view.fragmentos.FragmentCiudad;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecas;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecasBackup;
 import weekendfever.riva.com.view.fragmentos.FragmentKaraoke;
+import weekendfever.riva.com.view.fragmentos.FragmentMapa;
 import weekendfever.riva.com.view.fragmentos.FragmentSetting;
 
 public class Dashboard extends AppCompatActivity
@@ -58,7 +63,34 @@ public class Dashboard extends AppCompatActivity
 
         initNavigation();
         init();
+        initBottom();
 
+    }
+
+    private void initBottom() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                        int id = item.getItemId();
+
+                        if (id == R.id.action_cercademi) {
+                            menu_eventos();
+
+                            Toast.makeText(getApplicationContext(),"Ordenado",Toast.LENGTH_LONG).show();
+                        } else if (id == R.id.action_mapa) {
+                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            Toast.makeText(getApplicationContext(),"mapa",Toast.LENGTH_LONG).show();
+
+                        }
+
+                        return true;
+                    }
+                });
     }
 
     private void initNavigation() {
@@ -148,26 +180,15 @@ public class Dashboard extends AppCompatActivity
 
         if (id == R.id.nav_inicio) {
             setToolbar("Weekend Fever");
-
-
-            // Handle the camera action
         } else if (id == R.id.nav_eventos) {
             setToolbar("Eventos");
-//            TabLayout tabLayout = findViewById(R.id.tabs);
-//            tabLayout.setVisibility(View.GONE);
             menu_eventos();
-
-
-
         } else if (id == R.id.nav_ciudad) {
             setToolbar("Ciudad");
             menu_ciudad();
-
-
         } else if (id == R.id.nav_configuracion) {
             setToolbar("Configuración");
             menu_setting();
-
         } else if (id == R.id.nav_logout) {
             LoginManager.getInstance().logOut();
             FirebaseAuth.getInstance().signOut();
@@ -224,5 +245,25 @@ public class Dashboard extends AppCompatActivity
                 .addToBackStack("")
                 .commit();
     }
+
+
+    private void navigation_cercademi() {
+        FragmentCercaMi cerca = new FragmentCercaMi();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenidoTotal, cerca)
+                .setTransition(FragmentTransaction.TRANSIT_UNSET)
+                .addToBackStack("")
+                .commit();
+    }
+
+    private void navigation_vermapa() {
+        FragmentMapa mapa = new FragmentMapa();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenidoTotal, mapa)
+                .setTransition(FragmentTransaction.TRANSIT_UNSET)
+                .addToBackStack("")
+                .commit();
+    }
+
+
+
 
 }
