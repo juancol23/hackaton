@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -11,6 +12,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -72,13 +76,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void Antut(GoogleMap googleMap) {
         mMap = googleMap;
         final LatLng discoteca1 = new LatLng(-11.985572, -77.004368);
-        mMap.addMarker(new MarkerOptions().position(discoteca1).title("Discoteca Mango"));
+        mMap.addMarker(new MarkerOptions().position(discoteca1).title("Discoteca Mango")).showInfoWindow();
         final LatLng discoteca2 = new LatLng(-11.989696, -77.010525);
-        mMap.addMarker(new MarkerOptions().position(discoteca2).title("Bar Bambu"));
+        mMap.addMarker(new MarkerOptions().position(discoteca2).title("Bar Bambu")).showInfoWindow();
         final LatLng discoteca3 = new LatLng(-11.994213, -77.004900);
-        mMap.addMarker(new MarkerOptions().position(discoteca3).title("Discoteca Milet"));
+        mMap.addMarker(new MarkerOptions().position(discoteca3).title("Discoteca Milet")).showInfoWindow();
         final LatLng discoteca4 = new LatLng(-11.996226, -77.008813);
-        mMap.addMarker(new MarkerOptions().position(discoteca4).title("Bar Zafiro"));
+        mMap.addMarker(new MarkerOptions().position(discoteca4).title("Bar Zafiro")).showInfoWindow();
+        final LatLng discoteca5 = new LatLng(-11.987252, -77.004730);
+        mMap.addMarker(new MarkerOptions().position(discoteca5).title("Bar Mazmorra")).showInfoWindow();
+        final LatLng discoteca6 = new LatLng(-11.987252, -77.004730);
+        mMap.addMarker(new MarkerOptions().position(discoteca6).title("Discoteca Rumm")).showInfoWindow();
+
+
+        ImageView image = (ImageView) findViewById(R.id.main_image);
+
+        LinearLayout tv = (LinearLayout) this.getLayoutInflater().inflate(R.layout.market_item, null, false);
+        tv.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        tv.layout(0, 0, tv.getMeasuredWidth(), tv.getMeasuredHeight());
+
+        tv.setDrawingCacheEnabled(true);
+        tv.buildDrawingCache();
+        Bitmap bm = tv.getDrawingCache();
+
+
     }
 
     private void agregarMarcador(double lat, double lng) {
