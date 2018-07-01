@@ -2,7 +2,6 @@ package weekendfever.riva.com.view.menu;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,9 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
@@ -31,13 +28,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import weekendfever.riva.com.LoginActivity;
 import weekendfever.riva.com.R;
 import weekendfever.riva.com.adapter.ViewPagerAdapter;
+import weekendfever.riva.com.view.activity.ActivityCiudad;
+import weekendfever.riva.com.view.activity.ActivityConfiguracion;
+import weekendfever.riva.com.view.activity.ActivityEventos;
 import weekendfever.riva.com.view.activity.detalle.mapa.MapsActivity;
-import weekendfever.riva.com.view.fragmentos.FragmenEventos;
 import weekendfever.riva.com.view.fragmentos.FragmentBar;
 import weekendfever.riva.com.view.fragmentos.FragmentCercaMi;
 import weekendfever.riva.com.view.fragmentos.FragmentCiudad;
 import weekendfever.riva.com.view.fragmentos.FragmentDiscotecas;
-import weekendfever.riva.com.view.fragmentos.FragmentDiscotecasBackup;
 import weekendfever.riva.com.view.fragmentos.FragmentKaraoke;
 import weekendfever.riva.com.view.fragmentos.FragmentMapa;
 import weekendfever.riva.com.view.fragmentos.FragmentSetting;
@@ -51,7 +49,6 @@ public class Dashboard extends AppCompatActivity
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private static Typeface Pacifico,Nightmare,Double,BloodLust;
 
     NavigationView mNavigationView;
     //a list to store all the products
@@ -75,19 +72,13 @@ public class Dashboard extends AppCompatActivity
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                         int id = item.getItemId();
-
                         if (id == R.id.action_cercademi) {
-                            menu_eventos();
-
-                            Toast.makeText(getApplicationContext(),"Ordenado",Toast.LENGTH_LONG).show();
+                            menu_ciudad();
                         } else if (id == R.id.action_mapa) {
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                            Toast.makeText(getApplicationContext(),"mapa",Toast.LENGTH_LONG).show();
-
+//                            Toast.makeText(getApplicationContext(),"mapa",Toast.LENGTH_LONG).show();
                         }
-
                         return true;
                     }
                 });
@@ -181,14 +172,11 @@ public class Dashboard extends AppCompatActivity
         if (id == R.id.nav_inicio) {
             setToolbar("Weekend Fever");
         } else if (id == R.id.nav_eventos) {
-            setToolbar("Eventos");
-            menu_eventos();
+            startActivity(new Intent(getApplicationContext(),ActivityEventos.class));
         } else if (id == R.id.nav_ciudad) {
-            setToolbar("Ciudad");
-            menu_ciudad();
+            startActivity(new Intent(getApplicationContext(),ActivityCiudad.class));
         } else if (id == R.id.nav_configuracion) {
-            setToolbar("Configuración");
-            menu_setting();
+            startActivity(new Intent(getApplicationContext(),ActivityConfiguracion.class));
         } else if (id == R.id.nav_logout) {
             LoginManager.getInstance().logOut();
             FirebaseAuth.getInstance().signOut();
@@ -222,13 +210,6 @@ public class Dashboard extends AppCompatActivity
 
     }
 
-    private void menu_eventos() {
-        FragmenEventos eventos = new FragmenEventos();
-        getSupportFragmentManager().beginTransaction().replace(R.id.contenidoTotal, eventos)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack("")
-                .commit();
-    }
 
     private void menu_ciudad() {
         FragmentCiudad ciudad = new FragmentCiudad();
